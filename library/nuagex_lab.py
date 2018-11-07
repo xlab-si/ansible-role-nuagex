@@ -8,53 +8,106 @@ ANSIBLE_METADATA = {
 
 DOCUMENTATION = '''
 ---
-module: nuagex
-
-short_description: Ensure a running nuagex sandbox
-
+module: nuagex_lab
+short_description: Ensure a running NuageX sandbox (https://experience.nuagenetworks.net)
 version_added: "2.7"
-
 description:
-    - "This is my longer description explaining my sample module"
-
+    - "Ensures that a NuageX lab by specific name is provisioned or decomissioned."
 options:
+    naugex_auth:
+        description:
+            - Dict with the authentication information required to connect to the NuageX environment.
+            - Requires a I(username) parameter (example 'user01').
+            - Requires a I(password) parameter (example 'my-password01').
+            - You can omit the I(nuagex_auth) parameter and rely on NUX_USERNAME and NUX_PASSWORD environment vars
+        required: false
+        default: attempts to fetch credentials from environment
     name:
         description:
-            - This is the message to send to the sample module
+            - Desired NuageX lab name
         required: true
-    new:
-        description:
-            - Control to demo if the result of this module is changed or not
-        required: false
 
 author:
     - Miha Plesko (@miha-plesko)
 '''
 
 EXAMPLES = '''
-# Pass in a message
-- name: Test with a message
-  my_new_test_module:
-    name: hello world
-
-# pass in a message and have changed true
-- name: Test with a message and changed output
-  my_new_test_module:
-    name: hello world
-    new: true
-
-# fail the module
-- name: Test failure of the module
-  my_new_test_module:
-    name: fail me
+# Request lab named 'integration-tests', passing credentials as parameters
+- name: Request lab running
+  nuagex_lab:
+    nuagex_auth:
+      username: user01
+      password: my-password01
+    name: integration-tests
+    state: present
+    
+# Request lab named 'integration-tests', passing credentials as environment variables
+- name: Request lab running
+  nuagex_lab:
+    name: integration-tests
+    state: present
+  environment:
+    NUX_USERNAME: user01
+    NUX_PASSWORD: my-password01
+    
+# Ensure lab named 'integration-tests' is destroyed
+- name: Request lab destroyed
+  nuagex_lab:
+    name: integration-tests
+    state: absent
+    
+# Obtain lab access data and print it
+- name: Obtain lab access data
+  nuagex_lab:
+    name: integration-tests
+  register: lab  
+- name: Print lab access data
+  debug: var=lab
+# ok: [localhost] => {
+#    "lab": {
+#        "lab_name": "integration-tests", 
+#        "lab_id": "5be2d3e0b779ef0c66593251", 
+#        "lab_ip": "124.252.253.179", 
+#        "lab_web": {
+#            "address": "https://124.252.253.179:8443", 
+#            "org": "csp", 
+#            "user": "admin",
+#            "password": "_h5vGWvkrHgt1aEu"
+#        },
+#        "lab_amqp": {
+#            "address": "amqp://124.252.253.179:5672", 
+#            "password": "the-password", 
+#            "user": "the-user@system"
+#        }, 
+#    }
+# }
 '''
 
 RETURN = '''
-original_message:
-    description: The original name param that was passed in
+lab_name:
+    description: Name of the NuageX lab
     type: str
-message:
-    description: The output message that the sample module generates
+lab_id:
+    description: ID of the NuageX lab
+    type: str
+lab_ip:
+    description: IPv4 address of the NuageX lab
+    type: str
+lab_web:
+    description: Dict containing connectivity information to NuageX web interface
+    fields:
+    - address e.g. "https://124.252.253.179:8443"
+    - org e.g "csp"
+    - user e.g. "admin"
+    - password e.g. "_h5vGWvkrHgt1aEu"
+    type: dict
+lab_amqp:
+    description: Dict containing connectivity information to NuageX AMQP eventing interface
+    fields:
+    - address e.g. "amqp://124.252.253.179:5672"
+    - user e.g. "the-user@system"
+    - password e.g. "the-password"
+    type: dict
 '''
 
 from ansible.module_utils.basic import AnsibleModule
@@ -153,16 +206,16 @@ class NuageX(object):
 
 
 class NuageLab(object):
-    def __init__(self, name, id, status, address, password):
+    def __init__(self, name, id, status, ip, password):
         self.name = name
         self.id = id
         self.status = status
-        self.address = address
+        self.ip = ip
         self.password = password
 
     def __str__(self):
-        return 'NuageLab (id={id}, name={name}, address={address}, password={password})'.format(
-            id=self.id, name=self.name, address=self.address, password=self.password)
+        return 'NuageLab (id={id}, name={name}, ip={ip}, password={password})'.format(
+            id=self.id, name=self.name, ip=self.ip, password=self.password)
 
     @staticmethod
     def from_json(data):
@@ -179,8 +232,18 @@ class NuageLab(object):
         return {
             'lab_id': self.id,
             'lab_name': self.name,
-            'lab_address': self.address,
-            'lab_password': self.password,
+            'lab_ip': self.ip,
+            'lab_web': {
+                'address': 'https://{}:8443'.format(self.ip),
+                'user': 'admin',
+                'password': self.password,
+                'org': 'csp'
+            },
+            'lab_amqp': {
+                'address': 'amqp://{}:5672'.format(self.ip),
+                'user': 'jmsuser@system',
+                'password': 'jmspass'
+            }
         }
 
     @property
@@ -202,8 +265,9 @@ def run_module():
         changed=False,
         lab_id='',
         lab_name='',
-        lab_address='',
-        lab_password=''
+        lab_ip='',
+        lab_web={},
+        lab_amqp={},
     )
 
     module = AnsibleModule(
