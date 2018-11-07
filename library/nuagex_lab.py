@@ -26,6 +26,14 @@ options:
         description:
             - Desired NuageX lab name
         required: true
+    template:
+        description:
+            - Which template to provision lab from (example: "Nuage Networks 5.3.1 - VSP")
+            - If template name is not provided, then first template found is taken after sorting them by name
+            - Must be template name, not ID
+        required: false
+    state:
+        description: Can one of [present,absent]
 
 author:
     - Miha Plesko (@miha-plesko)
@@ -49,6 +57,13 @@ EXAMPLES = '''
   environment:
     NUX_USERNAME: user01
     NUX_PASSWORD: my-password01
+
+# Request lab named 'integration-tests', using specific template
+- name: Request lab running
+  nuagex_lab:
+    name: integration-tests
+    state: present
+    template: Nuage Networks 5.3.1 - VSP
     
 # Ensure lab named 'integration-tests' is destroyed
 - name: Request lab destroyed
@@ -60,6 +75,7 @@ EXAMPLES = '''
 - name: Obtain lab access data
   nuagex_lab:
     name: integration-tests
+    template: Nuage Networks 5.3.1 - VSP
   register: lab  
 - name: Print lab access data
   debug: var=lab
@@ -151,10 +167,30 @@ class NuageX(object):
         labs = self._api_json('/labs?name={}'.format(name))
         return NuageLab.from_json(labs[0]) if labs else None
 
-    def create_lab(self, name):
+    def first_template(self, name=None):
+        """
+        Get template by name if name is given, else first template found.
+        :param name: Name of the tamplate. If None, first template available will be taken.
+        :return: template instance or None
+        """
+        templates = self._api_json('/templates')
+        if name:
+            templates = [t for t in templates if t.get('name') == name]
+        templates = sorted(templates, key=lambda t: t['name'])
+        return NuageTemplate.from_json(templates[0]) if templates else None
+
+    def first_template_or_fail(self, name=None):
+        template = self.first_template(name=name)
+        if not template and name:
+            self.module.fail_json(msg='Template named "{}" does not exist'.format(name))
+        elif not template:
+            self.module.fail_json(msg='No available template found on NuageX')
+        return template
+
+    def create_lab(self, name, template):
         lab_data = self._api_json('/labs', method='POST', data={
             'name': name,
-            'template': '5b1ea8267c4dd10001279c31',
+            'template': template.id,
             'services': [],
             'networks': [],
             'servers': [],
@@ -163,8 +199,8 @@ class NuageX(object):
         })
         return NuageLab.from_json(lab_data)
 
-    def create_lab_sync(self, name):
-        self.create_lab(name)
+    def create_lab_sync(self, name, template):
+        self.create_lab(name, template)
         return self.wait_lab(name)
 
     def wait_lab(self, name, desired_state='present', retries=20, interval_seconds=5):
@@ -251,6 +287,22 @@ class NuageLab(object):
         return self.status == 'started'
 
 
+class NuageTemplate(object):
+    def __init__(self, name, id):
+        self.name = name
+        self.id = id
+
+    def __str__(self):
+        return 'NuageTemplate (id={id}, name={name})'.format(id=self.id, name=self.name)
+
+    @staticmethod
+    def from_json(data):
+        return NuageTemplate(
+            data.get('name'),
+            data.get('_id')
+        )
+
+
 def run_module():
     module_args = dict(
         name=dict(type='str', required=True),
@@ -259,6 +311,7 @@ def run_module():
             'username': os.environ.get('NUX_USERNAME'),
             'password': os.environ.get('NUX_PASSWORD')
         }),
+        template=dict(type='str', required=False)
     )
 
     result = dict(
@@ -276,6 +329,7 @@ def run_module():
     )
 
     lab_name = module.params.get('name')
+    template_name = module.params.get('template')
     desired_state = module.params.get('state')
     username = module.params.get('nuagex_auth', {}).get('username')
     password = module.params.get('nuagex_auth', {}).get('password')
@@ -300,12 +354,14 @@ def run_module():
         result['changed'] = True
         if not module.check_mode:
             nux.delete_lab_sync(lab)
-            lab = nux.create_lab_sync(lab_name)
+            template = nux.first_template_or_fail(template_name)
+            lab = nux.create_lab_sync(lab_name, template)
             result.update(lab.as_json)
     elif desired_state == 'present':
         result['changed'] = True
         if not module.check_mode:
-            lab = nux.create_lab_sync(lab_name)
+            template = nux.first_template_or_fail(template_name)
+            lab = nux.create_lab_sync(lab_name, template)
             result.update(lab.as_json)
     elif desired_state == 'absent' and lab:
         result['changed'] = True
