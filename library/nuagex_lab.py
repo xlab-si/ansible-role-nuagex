@@ -211,10 +211,6 @@ def run_module():
         supports_check_mode=True
     )
 
-    # Miha: make module runnable by PyCharm directly #############################################
-    module._remote_tmp = '/tmp'
-    module._keep_remote_files = False
-
     lab_name = module.params.get('name')
     desired_state = module.params.get('state')
     username = module.params.get('nuagex_auth', {}).get('username')
