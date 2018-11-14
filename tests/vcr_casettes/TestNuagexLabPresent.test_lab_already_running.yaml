@@ -1,0 +1,56 @@
+interactions:
+- request:
+    body: !!python/unicode '{"username": "USERNAME", "password": "PASSWORD"}'
+    headers:
+      Connection: [close]
+      Content-Length: ['52']
+      Content-Type: [application/json]
+      Host: [experience.nuagenetworks.net]
+      User-Agent: [ansible-httpget]
+    method: POST
+    uri: https://experience.nuagenetworks.net/api/auth/login
+  response:
+    body: {string: !!python/unicode '{"accessToken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1YmUwM2MwNTRkZmIwMDU5OGU4NWUyZDciLCJyb2xlcyI6WyJyZWFkOm1lIiwidXBkYXRlOm1lIiwicmVhZDpqb2JzIiwibGlzdDpqb2JzIiwibGlzdDpsYWJzIiwicmVhZDpsYWJzIiwiY3JlYXRlOmxhYnMiLCJkZWxldGU6bGFicyIsInJlYWQ6dGVtcGxhdGVzIiwibGlzdDp0ZW1wbGF0ZXMiLCJyZWFkOm9yZ2FuaXphdGlvbnMiLCJsaXN0LWRvY3M6cmVsZWFzZXMiLCJkb3dubG9hZC1kb2NzOnJlbGVhc2VzIl0sIm9yZ2FuaXphdGlvbiI6IjU4MDU0NTU2NmMwOGNhZTU2YWRkNTQ4NiIsImdyb3VwIjoiZW5kdXNlciIsImlhdCI6MTU0MjIwMzM4MywiZXhwIjoxNTQyMjg5NzgzLCJpc3MiOiJOdWFnZVggQXV0aCBTZXJ2aWNlIiwianRpIjoiODExYTI3ODI2ZTkxOWIzZWU1ZGRmNTQzNjBiY2VjMzkifQ.WuMxACVGdE5fTcZfaJ0SA9FYp4xVlaqHCqHhRXLr0mo","user":"5be03c054dfb00598e85e2d7","expiresIn":86400}'}
+    headers:
+      access-control-allow-origin: ['*']
+      connection: [close]
+      content-length: ['697']
+      content-type: [application/json; charset=utf-8]
+      date: ['Wed, 14 Nov 2018 13:49:43 GMT']
+      etag: [W/"2b9-LtGpIgiFfj1YQKUjC4TNiRFZQuA"]
+      server: [nginx]
+      set-cookie: [d5d626ae6780bef43898fb1a74c08e1e=5ec0fa0ca221bcbab4a825a92b157325;
+          path=/; HttpOnly]
+      vary: [Accept-Encoding]
+      x-request-id: [91816a5e-fb85-41d9-8195-1f536ebb2762]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Authorization: [Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1YmUwM2MwNTRkZmIwMDU5OGU4NWUyZDciLCJyb2xlcyI6WyJyZWFkOm1lIiwidXBkYXRlOm1lIiwicmVhZDpqb2JzIiwibGlzdDpqb2JzIiwibGlzdDpsYWJzIiwicmVhZDpsYWJzIiwiY3JlYXRlOmxhYnMiLCJkZWxldGU6bGFicyIsInJlYWQ6dGVtcGxhdGVzIiwibGlzdDp0ZW1wbGF0ZXMiLCJyZWFkOm9yZ2FuaXphdGlvbnMiLCJsaXN0LWRvY3M6cmVsZWFzZXMiLCJkb3dubG9hZC1kb2NzOnJlbGVhc2VzIl0sIm9yZ2FuaXphdGlvbiI6IjU4MDU0NTU2NmMwOGNhZTU2YWRkNTQ4NiIsImdyb3VwIjoiZW5kdXNlciIsImlhdCI6MTU0MjIwMzM4MywiZXhwIjoxNTQyMjg5NzgzLCJpc3MiOiJOdWFnZVggQXV0aCBTZXJ2aWNlIiwianRpIjoiODExYTI3ODI2ZTkxOWIzZWU1ZGRmNTQzNjBiY2VjMzkifQ.WuMxACVGdE5fTcZfaJ0SA9FYp4xVlaqHCqHhRXLr0mo]
+      Connection: [close]
+      Content-Type: [application/json]
+      Host: [experience.nuagenetworks.net]
+      User-Agent: [ansible-httpget]
+    method: GET
+    uri: https://experience.nuagenetworks.net/api/labs?name=integration-tests
+  response:
+    body: {string: !!python/unicode '[{"_id":"5bec14ffb779ef9754593365","repositoriesToken":"34f5abe64c4b5980e22bf40c65b7e7e9887dbd12bf2c6e25","name":"integration-tests","reason":"Created
+        by Ansible","organization":"580545566c08cae56add5486","user":"5be03c054dfb00598e85e2d7","expires":"0001-01-01T00:00:00.000Z","template":"5b1ea8267c4dd10001279c31","password":"yT3VRYZQQo1Xmv3o","__v":0,"externalIP":"124.252.253.126","status":"started","services":["5bec14ffb779ef11e659335b","5bec14ffb779ef8a0059335c","5bec14ffb779ef860659335d","5bec14ffb779efe9aa59335e","5bec14ffb779ef502359335f","5bec14ffb779ef7d97593360"],"networks":["5bec14ffb779efb6a659335a"],"servers":["5bec14ffb779ef6741593363","5bec14ffb779eff0eb593364"],"sshKeys":[],"created":"2018-11-14T13:48:12.718Z"}]'}
+    headers:
+      access-control-allow-origin: ['*']
+      cache-control: [private]
+      connection: [close]
+      content-length: ['734']
+      content-type: [application/json; charset=utf-8]
+      date: ['Wed, 14 Nov 2018 13:49:44 GMT']
+      etag: [W/"2de-zhsh4fCyVpzn+53isbRQO7kXRNE"]
+      link: ['<http://api-gateway-production.nuagex.svc:3000/api/labs?page=1&limit=10>;rel="first",<http://api-gateway-production.nuagex.svc:3000/api/labs?page=1&limit=10>;rel="last"']
+      server: [nginx]
+      set-cookie: [d5d626ae6780bef43898fb1a74c08e1e=2f58d06a003e0a3e5a0e16b484f90c8c;
+          path=/; HttpOnly]
+      vary: [Accept-Encoding]
+      x-request-id: [a3eac72c-3a36-44ed-bbeb-a72b03c45650]
+      x-total-count: ['1']
+    status: {code: 200, message: OK}
+version: 1
