@@ -43,6 +43,11 @@ class TestNuagexLabPresent(utils.AnsibleVCRMixin, utils.AnsibleUnittestingMixin,
             self.module.main()
         self.assertFalse(utils.fetch_data(result, 'changed'))
 
+    def test_lab_already_exists_but_errors(self):
+        with self.assertRaises(utils.AnsibleExitJson) as result:
+            self.module.main()
+        self.assertTrue(utils.fetch_data(result, 'changed'))
+
 
 class TestNuagexLabAbsent(utils.AnsibleVCRMixin, utils.AnsibleUnittestingMixin, unittest.TestCase):
     def setUp(self):

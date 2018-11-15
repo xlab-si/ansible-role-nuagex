@@ -1,0 +1,250 @@
+interactions:
+- request:
+    body: !!python/unicode '{"username": "USERNAME", "password": "PASSWORD"}'
+    headers:
+      Connection: [close]
+      Content-Length: ['52']
+      Content-Type: [application/json]
+      Host: [experience.nuagenetworks.net]
+      User-Agent: [ansible-httpget]
+    method: POST
+    uri: https://experience.nuagenetworks.net/api/auth/login
+  response:
+    body: {string: !!python/unicode '{"accessToken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1YmUwM2MwNTRkZmIwMDU5OGU4NWUyZDciLCJyb2xlcyI6WyJyZWFkOm1lIiwidXBkYXRlOm1lIiwicmVhZDpqb2JzIiwibGlzdDpqb2JzIiwibGlzdDpsYWJzIiwicmVhZDpsYWJzIiwiY3JlYXRlOmxhYnMiLCJkZWxldGU6bGFicyIsInJlYWQ6dGVtcGxhdGVzIiwibGlzdDp0ZW1wbGF0ZXMiLCJyZWFkOm9yZ2FuaXphdGlvbnMiLCJsaXN0LWRvY3M6cmVsZWFzZXMiLCJkb3dubG9hZC1kb2NzOnJlbGVhc2VzIl0sIm9yZ2FuaXphdGlvbiI6IjU4MDU0NTU2NmMwOGNhZTU2YWRkNTQ4NiIsImdyb3VwIjoiZW5kdXNlciIsImlhdCI6MTU0MjI2NzEzNCwiZXhwIjoxNTQyMzUzNTM0LCJpc3MiOiJOdWFnZVggQXV0aCBTZXJ2aWNlIiwianRpIjoiMzM0ZmUxOWU2YmFiOWJkOTAyZTI0ZjAxZGVkZTQyYjUifQ.7XfO848_XNaZHqmcHeO3W3W35XS3V7eJaP4soZrHGgI","user":"5be03c054dfb00598e85e2d7","expiresIn":86400}'}
+    headers:
+      access-control-allow-origin: ['*']
+      connection: [close]
+      content-length: ['697']
+      content-type: [application/json; charset=utf-8]
+      date: ['Thu, 15 Nov 2018 07:32:14 GMT']
+      etag: [W/"2b9-UBnhQIrVR8zQmdgDc65rZixDf+o"]
+      server: [nginx]
+      set-cookie: [d5d626ae6780bef43898fb1a74c08e1e=5ec0fa0ca221bcbab4a825a92b157325;
+          path=/; HttpOnly]
+      vary: [Accept-Encoding]
+      x-request-id: [99cd23b3-4f16-4155-8969-c3f03e63600c]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Authorization: [Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1YmUwM2MwNTRkZmIwMDU5OGU4NWUyZDciLCJyb2xlcyI6WyJyZWFkOm1lIiwidXBkYXRlOm1lIiwicmVhZDpqb2JzIiwibGlzdDpqb2JzIiwibGlzdDpsYWJzIiwicmVhZDpsYWJzIiwiY3JlYXRlOmxhYnMiLCJkZWxldGU6bGFicyIsInJlYWQ6dGVtcGxhdGVzIiwibGlzdDp0ZW1wbGF0ZXMiLCJyZWFkOm9yZ2FuaXphdGlvbnMiLCJsaXN0LWRvY3M6cmVsZWFzZXMiLCJkb3dubG9hZC1kb2NzOnJlbGVhc2VzIl0sIm9yZ2FuaXphdGlvbiI6IjU4MDU0NTU2NmMwOGNhZTU2YWRkNTQ4NiIsImdyb3VwIjoiZW5kdXNlciIsImlhdCI6MTU0MjI2NzEzNCwiZXhwIjoxNTQyMzUzNTM0LCJpc3MiOiJOdWFnZVggQXV0aCBTZXJ2aWNlIiwianRpIjoiMzM0ZmUxOWU2YmFiOWJkOTAyZTI0ZjAxZGVkZTQyYjUifQ.7XfO848_XNaZHqmcHeO3W3W35XS3V7eJaP4soZrHGgI]
+      Connection: [close]
+      Content-Type: [application/json]
+      Host: [experience.nuagenetworks.net]
+      User-Agent: [ansible-httpget]
+    method: GET
+    uri: https://experience.nuagenetworks.net/api/labs?name=integration-tests
+  response:
+    body: {string: !!python/unicode '[{"_id":"5bed2089e8b26153abc962ab","repositoriesToken":"fb0220ba7798b49b5e31de52e2ba8515ed983e709eea78d4","name":"integration-tests","reason":"nuxctl","organization":"580545566c08cae56add5486","user":"5be03c054dfb00598e85e2d7","expires":"2018-11-30T17:13:11.278Z","template":"5b1ea8267c4dd10001279c31","password":"t3yq94D9VSiKUPOm","__v":0,"status":"errored","services":["5bed2089e8b261a6aec9629d","5bed2089e8b26184e4c9629e","5bed2089e8b2615d27c9629f","5bed2089e8b261632cc962a0","5bed2089e8b261342bc962a1","5bed2089e8b2617d3cc962a2"],"networks":["5bed2089e8b2619319c9629c"],"servers":["5bed2089e8b2615352c962a9","5bed2089e8b2619417c962a8","5bed2089e8b2614b75c962aa"],"sshKeys":[],"created":"2018-11-15T07:30:17.997Z"}]'}
+    headers:
+      access-control-allow-origin: ['*']
+      cache-control: [private]
+      connection: [close]
+      content-length: ['718']
+      content-type: [application/json; charset=utf-8]
+      date: ['Thu, 15 Nov 2018 07:32:15 GMT']
+      etag: [W/"2ce-D4wd8DpQJ2IIxViMWdbCGm1KgeQ"]
+      link: ['<http://api-gateway-production.nuagex.svc:3000/api/labs?page=1&limit=10>;rel="first",<http://api-gateway-production.nuagex.svc:3000/api/labs?page=1&limit=10>;rel="last"']
+      server: [nginx]
+      set-cookie: [d5d626ae6780bef43898fb1a74c08e1e=2f58d06a003e0a3e5a0e16b484f90c8c;
+          path=/; HttpOnly]
+      vary: [Accept-Encoding]
+      x-request-id: [eb5dadc6-9bed-44b7-a284-6925c7056070]
+      x-total-count: ['1']
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Authorization: [Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1YmUwM2MwNTRkZmIwMDU5OGU4NWUyZDciLCJyb2xlcyI6WyJyZWFkOm1lIiwidXBkYXRlOm1lIiwicmVhZDpqb2JzIiwibGlzdDpqb2JzIiwibGlzdDpsYWJzIiwicmVhZDpsYWJzIiwiY3JlYXRlOmxhYnMiLCJkZWxldGU6bGFicyIsInJlYWQ6dGVtcGxhdGVzIiwibGlzdDp0ZW1wbGF0ZXMiLCJyZWFkOm9yZ2FuaXphdGlvbnMiLCJsaXN0LWRvY3M6cmVsZWFzZXMiLCJkb3dubG9hZC1kb2NzOnJlbGVhc2VzIl0sIm9yZ2FuaXphdGlvbiI6IjU4MDU0NTU2NmMwOGNhZTU2YWRkNTQ4NiIsImdyb3VwIjoiZW5kdXNlciIsImlhdCI6MTU0MjI2NzEzNCwiZXhwIjoxNTQyMzUzNTM0LCJpc3MiOiJOdWFnZVggQXV0aCBTZXJ2aWNlIiwianRpIjoiMzM0ZmUxOWU2YmFiOWJkOTAyZTI0ZjAxZGVkZTQyYjUifQ.7XfO848_XNaZHqmcHeO3W3W35XS3V7eJaP4soZrHGgI]
+      Connection: [close]
+      Content-Type: [application/json]
+      Host: [experience.nuagenetworks.net]
+      User-Agent: [ansible-httpget]
+    method: DELETE
+    uri: https://experience.nuagenetworks.net/api/labs/5bed2089e8b26153abc962ab
+  response:
+    body: {string: !!python/unicode ''}
+    headers:
+      access-control-allow-origin: ['*']
+      connection: [close]
+      content-length: ['0']
+      date: ['Thu, 15 Nov 2018 07:32:17 GMT']
+      server: [nginx]
+      set-cookie: [d5d626ae6780bef43898fb1a74c08e1e=5ec0fa0ca221bcbab4a825a92b157325;
+          path=/; HttpOnly]
+      x-request-id: [1c91c494-c8ea-4976-9070-f72be5c575e7]
+    status: {code: 202, message: Accepted}
+- request:
+    body: null
+    headers:
+      Authorization: [Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1YmUwM2MwNTRkZmIwMDU5OGU4NWUyZDciLCJyb2xlcyI6WyJyZWFkOm1lIiwidXBkYXRlOm1lIiwicmVhZDpqb2JzIiwibGlzdDpqb2JzIiwibGlzdDpsYWJzIiwicmVhZDpsYWJzIiwiY3JlYXRlOmxhYnMiLCJkZWxldGU6bGFicyIsInJlYWQ6dGVtcGxhdGVzIiwibGlzdDp0ZW1wbGF0ZXMiLCJyZWFkOm9yZ2FuaXphdGlvbnMiLCJsaXN0LWRvY3M6cmVsZWFzZXMiLCJkb3dubG9hZC1kb2NzOnJlbGVhc2VzIl0sIm9yZ2FuaXphdGlvbiI6IjU4MDU0NTU2NmMwOGNhZTU2YWRkNTQ4NiIsImdyb3VwIjoiZW5kdXNlciIsImlhdCI6MTU0MjI2NzEzNCwiZXhwIjoxNTQyMzUzNTM0LCJpc3MiOiJOdWFnZVggQXV0aCBTZXJ2aWNlIiwianRpIjoiMzM0ZmUxOWU2YmFiOWJkOTAyZTI0ZjAxZGVkZTQyYjUifQ.7XfO848_XNaZHqmcHeO3W3W35XS3V7eJaP4soZrHGgI]
+      Connection: [close]
+      Content-Type: [application/json]
+      Host: [experience.nuagenetworks.net]
+      User-Agent: [ansible-httpget]
+    method: GET
+    uri: https://experience.nuagenetworks.net/api/labs?name=integration-tests
+  response:
+    body: {string: !!python/unicode '[]'}
+    headers:
+      access-control-allow-origin: ['*']
+      cache-control: [private]
+      connection: [close]
+      content-length: ['2']
+      content-type: [application/json; charset=utf-8]
+      date: ['Thu, 15 Nov 2018 07:32:18 GMT']
+      etag: [W/"2-l9Fw4VUO7kr8CvBlt4zaMCqXZ0w"]
+      link: ['<http://api-gateway-production.nuagex.svc:3000/api/labs?page=1&limit=10>;rel="first",<http://api-gateway-production.nuagex.svc:3000/api/labs?page=1&limit=10>;rel="last"']
+      server: [nginx]
+      set-cookie: [d5d626ae6780bef43898fb1a74c08e1e=2f58d06a003e0a3e5a0e16b484f90c8c;
+          path=/; HttpOnly]
+      vary: [Accept-Encoding]
+      x-request-id: [ab080448-7420-4b27-ab0d-0927c4a5895a]
+      x-total-count: ['0']
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Authorization: [Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1YmUwM2MwNTRkZmIwMDU5OGU4NWUyZDciLCJyb2xlcyI6WyJyZWFkOm1lIiwidXBkYXRlOm1lIiwicmVhZDpqb2JzIiwibGlzdDpqb2JzIiwibGlzdDpsYWJzIiwicmVhZDpsYWJzIiwiY3JlYXRlOmxhYnMiLCJkZWxldGU6bGFicyIsInJlYWQ6dGVtcGxhdGVzIiwibGlzdDp0ZW1wbGF0ZXMiLCJyZWFkOm9yZ2FuaXphdGlvbnMiLCJsaXN0LWRvY3M6cmVsZWFzZXMiLCJkb3dubG9hZC1kb2NzOnJlbGVhc2VzIl0sIm9yZ2FuaXphdGlvbiI6IjU4MDU0NTU2NmMwOGNhZTU2YWRkNTQ4NiIsImdyb3VwIjoiZW5kdXNlciIsImlhdCI6MTU0MjI2NzEzNCwiZXhwIjoxNTQyMzUzNTM0LCJpc3MiOiJOdWFnZVggQXV0aCBTZXJ2aWNlIiwianRpIjoiMzM0ZmUxOWU2YmFiOWJkOTAyZTI0ZjAxZGVkZTQyYjUifQ.7XfO848_XNaZHqmcHeO3W3W35XS3V7eJaP4soZrHGgI]
+      Connection: [close]
+      Content-Type: [application/json]
+      Host: [experience.nuagenetworks.net]
+      User-Agent: [ansible-httpget]
+    method: GET
+    uri: https://experience.nuagenetworks.net/api/templates
+  response:
+    body: {string: !!python/unicode '[{"_id":"5b1ea8267c4dd10001279c31","name":"Nuage
+        Networks 5.3.1 - VSP","__v":17,"allowedGroups":["enduser","partner","employee"],"allowedOrganizations":["5761f91250340d0100452afc","580545566c08cae56add5486","58d3eae1f0f5f100015eca21","58d3ea57f0f5f100015eca1d","58263cc147057600012dc4ba","59839b71f0f5f100015eca22","5abc15ab7a1cfe0001470aaf","5a7fb015c0c43b0001359b7a","5ade71b774022800012190c6","58d3ead1f0f5f100015eca20","58d3ea9ef0f5f100015eca1f","58d3ea80f0f5f100015eca1e","5be2230e51d4f50001162633"],"draft":false,"updated":"2018-06-11T16:49:42.354Z","created":"2018-06-11T16:49:42.354Z","numDeployment":0,"services":[{"name":"vsd","type":"public","port":8443,"urlScheme":"https","_id":"5b1ea950c7b3920001021a03","protocols":["tcp"],"destination":{"port":8443,"address":"10.0.0.2"}},{"port":6633,"name":"vsc-openflow","type":"public","_id":"5b2762057c4dd10001279c76","protocols":["tcp"],"destination":{"address":"10.0.0.3","port":6633}},{"name":"vsc-jsonrpc","type":"public","port":7406,"_id":"5b2762057c4dd10001279c75","protocols":["tcp"],"destination":{"address":"10.0.0.3","port":7406}},{"name":"vsd-amqp","type":"public","port":5672,"_id":"5bbfbe8952d68000015469e4","protocols":["tcp"],"destination":{"address":"10.0.0.2","port":5672}},{"name":"vsd-jms","type":"public","port":61616,"_id":"5bbfbe8952d68000015469e3","protocols":["tcp"],"destination":{"address":"10.0.0.2","port":61616}},{"name":"vsd-certificate-auth-api","port":7443,"type":"public","_id":"5bbfbe8952d68000015469e2","protocols":["tcp"],"destination":{"address":"10.0.0.2","port":7443}}],"networks":[{"name":"private","cidr":"10.0.0.0/24","_id":"5b1ea950c7b3920001021a04","dns":["10.0.0.1"],"dhcp":true}],"servers":[{"name":"vsd01","image":"vsd01_NUX_5.3.1","flavor":"ceph.vsd","_id":"5b1ea950c7b3920001021a07","interfaces":[{"index":0,"network":"private","address":"10.0.0.2","_id":"5b1ea950c7b3920001021a08"}]},{"name":"vsc01","image":"vsc01_NUX_5.3.1","flavor":"ceph.vsc","_id":"5b1ea950c7b3920001021a05","interfaces":[{"index":0,"network":"private","address":"10.0.0.3","_id":"5b1ea950c7b3920001021a06"}]}],"tags":["vcs","public","vsp-5.3.1"],"metadatas":[{"key":"vsp_release","value":"5.3.1","_id":"5be225d4bc12f10001fb365f"},{"key":"bypass_vsd_init","value":"false","_id":"5be225d4bc12f10001fb365e"},{"key":"public","value":"true","_id":"5be225d4bc12f10001fb365d"},{"key":"ssh_access","value":"false","_id":"5be225d4bc12f10001fb365c"}]}]'}
+    headers:
+      access-control-allow-origin: ['*']
+      cache-control: [private]
+      connection: [close]
+      content-length: ['2418']
+      content-type: [application/json; charset=utf-8]
+      date: ['Thu, 15 Nov 2018 07:32:19 GMT']
+      etag: [W/"972-ZIwVh/27EOKT6wOlOmgFh0k5g54"]
+      link: ['<http://api-gateway-production.nuagex.svc:3000/api/templates?page=1&limit=10>;rel="first",<http://api-gateway-production.nuagex.svc:3000/api/templates?page=1&limit=10>;rel="last"']
+      server: [nginx]
+      set-cookie: [d5d626ae6780bef43898fb1a74c08e1e=2f58d06a003e0a3e5a0e16b484f90c8c;
+          path=/; HttpOnly]
+      vary: [Accept-Encoding]
+      x-request-id: [959f4f59-0823-48b4-a73c-c38c2929076b]
+      x-total-count: ['1']
+    status: {code: 200, message: OK}
+- request:
+    body: !!python/unicode '{"name": "integration-tests", "expires": "0001-01-01T00:00:00Z",
+      "servers": [], "reason": "Created by Ansible", "template": "5b1ea8267c4dd10001279c31",
+      "services": [], "networks": []}'
+    headers:
+      Authorization: [Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1YmUwM2MwNTRkZmIwMDU5OGU4NWUyZDciLCJyb2xlcyI6WyJyZWFkOm1lIiwidXBkYXRlOm1lIiwicmVhZDpqb2JzIiwibGlzdDpqb2JzIiwibGlzdDpsYWJzIiwicmVhZDpsYWJzIiwiY3JlYXRlOmxhYnMiLCJkZWxldGU6bGFicyIsInJlYWQ6dGVtcGxhdGVzIiwibGlzdDp0ZW1wbGF0ZXMiLCJyZWFkOm9yZ2FuaXphdGlvbnMiLCJsaXN0LWRvY3M6cmVsZWFzZXMiLCJkb3dubG9hZC1kb2NzOnJlbGVhc2VzIl0sIm9yZ2FuaXphdGlvbiI6IjU4MDU0NTU2NmMwOGNhZTU2YWRkNTQ4NiIsImdyb3VwIjoiZW5kdXNlciIsImlhdCI6MTU0MjI2NzEzNCwiZXhwIjoxNTQyMzUzNTM0LCJpc3MiOiJOdWFnZVggQXV0aCBTZXJ2aWNlIiwianRpIjoiMzM0ZmUxOWU2YmFiOWJkOTAyZTI0ZjAxZGVkZTQyYjUifQ.7XfO848_XNaZHqmcHeO3W3W35XS3V7eJaP4soZrHGgI]
+      Connection: [close]
+      Content-Length: ['183']
+      Content-Type: [application/json]
+      Host: [experience.nuagenetworks.net]
+      User-Agent: [ansible-httpget]
+    method: POST
+    uri: https://experience.nuagenetworks.net/api/labs
+  response:
+    body: {string: !!python/unicode '{"_id":"5bed180c15be2750856512f4","repositoriesToken":"1428f5441ced554a1f734afb9bb95e7bd4dfa8a0650607e6","name":"integration-tests","reason":"Created
+        by Ansible","organization":"580545566c08cae56add5486","user":"5be03c054dfb00598e85e2d7","expires":"0001-01-01T00:00:00.000Z","template":"5b1ea8267c4dd10001279c31","password":"npsWH9mPxcMUe3zk","__v":0,"externalIP":"124.252.253.38","status":"queued","services":["5bed180c15be2723d76512ea","5bed180c15be27156b6512eb","5bed180c15be27c65c6512ec","5bed180c15be2739446512ed","5bed180c15be271f0f6512ee","5bed180c15be27222c6512ef"],"networks":["5bed180c15be27290b6512e9"],"servers":["5bed180c15be273bcf6512f2","5bed180c15be2718706512f3"],"sshKeys":[],"created":"2018-11-15T07:32:23.240Z"}'}
+    headers:
+      access-control-allow-origin: ['*']
+      connection: [close]
+      content-length: ['730']
+      content-type: [application/json; charset=utf-8]
+      date: ['Thu, 15 Nov 2018 07:32:23 GMT']
+      etag: [W/"2da-+7nNEAqd+xHwvB4TOfRHcCtRo+c"]
+      server: [nginx]
+      set-cookie: [d5d626ae6780bef43898fb1a74c08e1e=5ec0fa0ca221bcbab4a825a92b157325;
+          path=/; HttpOnly]
+      vary: [Accept-Encoding]
+      x-request-id: [c066de66-11cf-46ef-a272-fd42ea740c57]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Authorization: [Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1YmUwM2MwNTRkZmIwMDU5OGU4NWUyZDciLCJyb2xlcyI6WyJyZWFkOm1lIiwidXBkYXRlOm1lIiwicmVhZDpqb2JzIiwibGlzdDpqb2JzIiwibGlzdDpsYWJzIiwicmVhZDpsYWJzIiwiY3JlYXRlOmxhYnMiLCJkZWxldGU6bGFicyIsInJlYWQ6dGVtcGxhdGVzIiwibGlzdDp0ZW1wbGF0ZXMiLCJyZWFkOm9yZ2FuaXphdGlvbnMiLCJsaXN0LWRvY3M6cmVsZWFzZXMiLCJkb3dubG9hZC1kb2NzOnJlbGVhc2VzIl0sIm9yZ2FuaXphdGlvbiI6IjU4MDU0NTU2NmMwOGNhZTU2YWRkNTQ4NiIsImdyb3VwIjoiZW5kdXNlciIsImlhdCI6MTU0MjI2NzEzNCwiZXhwIjoxNTQyMzUzNTM0LCJpc3MiOiJOdWFnZVggQXV0aCBTZXJ2aWNlIiwianRpIjoiMzM0ZmUxOWU2YmFiOWJkOTAyZTI0ZjAxZGVkZTQyYjUifQ.7XfO848_XNaZHqmcHeO3W3W35XS3V7eJaP4soZrHGgI]
+      Connection: [close]
+      Content-Type: [application/json]
+      Host: [experience.nuagenetworks.net]
+      User-Agent: [ansible-httpget]
+    method: GET
+    uri: https://experience.nuagenetworks.net/api/labs?name=integration-tests
+  response:
+    body: {string: !!python/unicode '[{"_id":"5bed180c15be2750856512f4","repositoriesToken":"1428f5441ced554a1f734afb9bb95e7bd4dfa8a0650607e6","name":"integration-tests","reason":"Created
+        by Ansible","organization":"580545566c08cae56add5486","user":"5be03c054dfb00598e85e2d7","expires":"0001-01-01T00:00:00.000Z","template":"5b1ea8267c4dd10001279c31","password":"npsWH9mPxcMUe3zk","__v":0,"externalIP":"124.252.253.38","status":"deploying","services":["5bed180c15be2723d76512ea","5bed180c15be27156b6512eb","5bed180c15be27c65c6512ec","5bed180c15be2739446512ed","5bed180c15be271f0f6512ee","5bed180c15be27222c6512ef"],"networks":["5bed180c15be27290b6512e9"],"servers":["5bed180c15be273bcf6512f2","5bed180c15be2718706512f3"],"sshKeys":[],"created":"2018-11-15T07:32:23.240Z"}]'}
+    headers:
+      access-control-allow-origin: ['*']
+      cache-control: [private]
+      connection: [close]
+      content-length: ['735']
+      content-type: [application/json; charset=utf-8]
+      date: ['Thu, 15 Nov 2018 07:32:24 GMT']
+      etag: [W/"2df-vdT3/mBvIAOigcQZ4sicJlXrm1s"]
+      link: ['<http://api-gateway-production.nuagex.svc:3000/api/labs?page=1&limit=10>;rel="first",<http://api-gateway-production.nuagex.svc:3000/api/labs?page=1&limit=10>;rel="last"']
+      server: [nginx]
+      set-cookie: [d5d626ae6780bef43898fb1a74c08e1e=2f58d06a003e0a3e5a0e16b484f90c8c;
+          path=/; HttpOnly]
+      vary: [Accept-Encoding]
+      x-request-id: [c80e2cb2-6ee2-47e6-ac50-ca6e8ee8d094]
+      x-total-count: ['1']
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Authorization: [Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1YmUwM2MwNTRkZmIwMDU5OGU4NWUyZDciLCJyb2xlcyI6WyJyZWFkOm1lIiwidXBkYXRlOm1lIiwicmVhZDpqb2JzIiwibGlzdDpqb2JzIiwibGlzdDpsYWJzIiwicmVhZDpsYWJzIiwiY3JlYXRlOmxhYnMiLCJkZWxldGU6bGFicyIsInJlYWQ6dGVtcGxhdGVzIiwibGlzdDp0ZW1wbGF0ZXMiLCJyZWFkOm9yZ2FuaXphdGlvbnMiLCJsaXN0LWRvY3M6cmVsZWFzZXMiLCJkb3dubG9hZC1kb2NzOnJlbGVhc2VzIl0sIm9yZ2FuaXphdGlvbiI6IjU4MDU0NTU2NmMwOGNhZTU2YWRkNTQ4NiIsImdyb3VwIjoiZW5kdXNlciIsImlhdCI6MTU0MjI2NzEzNCwiZXhwIjoxNTQyMzUzNTM0LCJpc3MiOiJOdWFnZVggQXV0aCBTZXJ2aWNlIiwianRpIjoiMzM0ZmUxOWU2YmFiOWJkOTAyZTI0ZjAxZGVkZTQyYjUifQ.7XfO848_XNaZHqmcHeO3W3W35XS3V7eJaP4soZrHGgI]
+      Connection: [close]
+      Content-Type: [application/json]
+      Host: [experience.nuagenetworks.net]
+      User-Agent: [ansible-httpget]
+    method: GET
+    uri: https://experience.nuagenetworks.net/api/labs?name=integration-tests
+  response:
+    body: {string: !!python/unicode '[{"_id":"5bed180c15be2750856512f4","repositoriesToken":"1428f5441ced554a1f734afb9bb95e7bd4dfa8a0650607e6","name":"integration-tests","reason":"Created
+        by Ansible","organization":"580545566c08cae56add5486","user":"5be03c054dfb00598e85e2d7","expires":"0001-01-01T00:00:00.000Z","template":"5b1ea8267c4dd10001279c31","password":"npsWH9mPxcMUe3zk","__v":0,"externalIP":"124.252.253.38","status":"deploying","services":["5bed180c15be2723d76512ea","5bed180c15be27156b6512eb","5bed180c15be27c65c6512ec","5bed180c15be2739446512ed","5bed180c15be271f0f6512ee","5bed180c15be27222c6512ef"],"networks":["5bed180c15be27290b6512e9"],"servers":["5bed180c15be273bcf6512f2","5bed180c15be2718706512f3"],"sshKeys":[],"created":"2018-11-15T07:32:23.240Z"}]'}
+    headers:
+      access-control-allow-origin: ['*']
+      cache-control: [private]
+      connection: [close]
+      content-length: ['735']
+      content-type: [application/json; charset=utf-8]
+      date: ['Thu, 15 Nov 2018 07:32:30 GMT']
+      etag: [W/"2df-vdT3/mBvIAOigcQZ4sicJlXrm1s"]
+      link: ['<http://api-gateway-production.nuagex.svc:3000/api/labs?page=1&limit=10>;rel="first",<http://api-gateway-production.nuagex.svc:3000/api/labs?page=1&limit=10>;rel="last"']
+      server: [nginx]
+      set-cookie: [d5d626ae6780bef43898fb1a74c08e1e=5ec0fa0ca221bcbab4a825a92b157325;
+          path=/; HttpOnly]
+      vary: [Accept-Encoding]
+      x-request-id: [278a86e5-e08e-4669-95a9-237256c5a742]
+      x-total-count: ['1']
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Authorization: [Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1YmUwM2MwNTRkZmIwMDU5OGU4NWUyZDciLCJyb2xlcyI6WyJyZWFkOm1lIiwidXBkYXRlOm1lIiwicmVhZDpqb2JzIiwibGlzdDpqb2JzIiwibGlzdDpsYWJzIiwicmVhZDpsYWJzIiwiY3JlYXRlOmxhYnMiLCJkZWxldGU6bGFicyIsInJlYWQ6dGVtcGxhdGVzIiwibGlzdDp0ZW1wbGF0ZXMiLCJyZWFkOm9yZ2FuaXphdGlvbnMiLCJsaXN0LWRvY3M6cmVsZWFzZXMiLCJkb3dubG9hZC1kb2NzOnJlbGVhc2VzIl0sIm9yZ2FuaXphdGlvbiI6IjU4MDU0NTU2NmMwOGNhZTU2YWRkNTQ4NiIsImdyb3VwIjoiZW5kdXNlciIsImlhdCI6MTU0MjI2NzEzNCwiZXhwIjoxNTQyMzUzNTM0LCJpc3MiOiJOdWFnZVggQXV0aCBTZXJ2aWNlIiwianRpIjoiMzM0ZmUxOWU2YmFiOWJkOTAyZTI0ZjAxZGVkZTQyYjUifQ.7XfO848_XNaZHqmcHeO3W3W35XS3V7eJaP4soZrHGgI]
+      Connection: [close]
+      Content-Type: [application/json]
+      Host: [experience.nuagenetworks.net]
+      User-Agent: [ansible-httpget]
+    method: GET
+    uri: https://experience.nuagenetworks.net/api/labs?name=integration-tests
+  response:
+    body: {string: !!python/unicode '[{"_id":"5bed180c15be2750856512f4","repositoriesToken":"1428f5441ced554a1f734afb9bb95e7bd4dfa8a0650607e6","name":"integration-tests","reason":"Created
+        by Ansible","organization":"580545566c08cae56add5486","user":"5be03c054dfb00598e85e2d7","expires":"0001-01-01T00:00:00.000Z","template":"5b1ea8267c4dd10001279c31","password":"npsWH9mPxcMUe3zk","__v":0,"externalIP":"124.252.253.38","status":"started","services":["5bed180c15be2723d76512ea","5bed180c15be27156b6512eb","5bed180c15be27c65c6512ec","5bed180c15be2739446512ed","5bed180c15be271f0f6512ee","5bed180c15be27222c6512ef"],"networks":["5bed180c15be27290b6512e9"],"servers":["5bed180c15be273bcf6512f2","5bed180c15be2718706512f3"],"sshKeys":[],"created":"2018-11-15T07:32:23.240Z"}]'}
+    headers:
+      access-control-allow-origin: ['*']
+      cache-control: [private]
+      connection: [close]
+      content-length: ['733']
+      content-type: [application/json; charset=utf-8]
+      date: ['Thu, 15 Nov 2018 07:32:37 GMT']
+      etag: [W/"2dd-s3Qe73EbrcqbOOtfipqXGnuVbBk"]
+      link: ['<http://api-gateway-production.nuagex.svc:3000/api/labs?page=1&limit=10>;rel="first",<http://api-gateway-production.nuagex.svc:3000/api/labs?page=1&limit=10>;rel="last"']
+      server: [nginx]
+      set-cookie: [d5d626ae6780bef43898fb1a74c08e1e=5ec0fa0ca221bcbab4a825a92b157325;
+          path=/; HttpOnly]
+      vary: [Accept-Encoding]
+      x-request-id: [b997d51b-7d06-4f0e-b8b9-22a1ae540282]
+      x-total-count: ['1']
+    status: {code: 200, message: OK}
+version: 1
