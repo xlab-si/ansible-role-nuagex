@@ -5,8 +5,5 @@ python:
 cache: pip
 install:
   - pip install -r requirements-dev.txt
-before_script:
-  - cd tests
-  - export PYTHONPATH="$PYTHONPATH:.."
 script:
-  - python -m unittest discover -v
+  - python -m unittest discover tests/ -v

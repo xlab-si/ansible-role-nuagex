@@ -1,4 +1,5 @@
 import json
+import os
 import time
 import vcr
 
@@ -23,7 +24,7 @@ class AnsibleVCRMixin(VCRMixin):
     def _get_vcr_kwargs(self):
         return {
             'custom_patches': ((urls, 'CustomHTTPSConnection', vcr.stubs.VCRHTTPSConnection),),
-            'cassette_library_dir': './vcr_casettes',
+            'cassette_library_dir': os.path.join(os.path.dirname(os.path.realpath(__file__)), 'vcr_casettes'),
             'filter_post_data_parameters': [('username', 'USERNAME'), ('password', 'PASSWORD')]
         }
 
