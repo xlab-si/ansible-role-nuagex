@@ -28,7 +28,7 @@ options:
         required: true
     template:
         description:
-            - Which template to provision lab from (example: "Nuage Networks 5.3.1 - VSP")
+            - Which template to provision lab from (example "Nuage Networks 5.3.1 - VSP")
             - If template name is not provided, then first template found is taken after sorting them by name
             - Must be template name, not ID
         required: false

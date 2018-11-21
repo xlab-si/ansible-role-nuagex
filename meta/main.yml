@@ -1,0 +1,10 @@
+galaxy_info:
+  role_name: nuagex
+  author: xlab-si
+  company: XLAB d.o.o.
+  license: BSD
+  min_ansible_version: 2.5
+  galaxy_tags:
+    - nuage
+    - nuagex
+dependencies: []
