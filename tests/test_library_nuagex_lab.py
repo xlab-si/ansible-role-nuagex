@@ -37,16 +37,19 @@ class TestNuagexLabPresent(utils.AnsibleVCRMixin, utils.AnsibleUnittestingMixin,
         with self.assertRaises(utils.AnsibleExitJson) as result:
             self.module.main()
         self.assertTrue(utils.fetch_data(result, 'changed'))
+        self.assertLabReturned(result)
 
     def test_lab_already_running(self):
         with self.assertRaises(utils.AnsibleExitJson) as result:
             self.module.main()
         self.assertFalse(utils.fetch_data(result, 'changed'))
+        self.assertLabReturned(result)
 
     def test_lab_already_exists_but_errors(self):
         with self.assertRaises(utils.AnsibleExitJson) as result:
             self.module.main()
         self.assertTrue(utils.fetch_data(result, 'changed'))
+        self.assertLabReturned(result)
 
 
 class TestNuagexLabAbsent(utils.AnsibleVCRMixin, utils.AnsibleUnittestingMixin, unittest.TestCase):
@@ -68,9 +71,11 @@ class TestNuagexLabAbsent(utils.AnsibleVCRMixin, utils.AnsibleUnittestingMixin, 
         with self.assertRaises(utils.AnsibleExitJson) as result:
             self.module.main()
         self.assertTrue(utils.fetch_data(result, 'changed'))
+        self.assertNoLabReturned(result)
 
     def test_lab_already_gone(self):
         with self.assertRaises(utils.AnsibleExitJson) as result:
             self.module.main()
         self.assertFalse(utils.fetch_data(result, 'changed'))
+        self.assertNoLabReturned(result)
 

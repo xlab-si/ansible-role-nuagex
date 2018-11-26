@@ -48,6 +48,31 @@ class AnsibleUnittestingMixin(object):
         mock.start()
         self.addCleanup(mock.stop)
 
+    def assertPresent(self, value):
+        self.assertTrue(value, msg='Expected value, got {}'.format(value))
+
+    def assertLabReturned(self, result):
+        self.assertEqual(fetch_data(result, 'lab_name'), 'integration-tests')
+        self.assertPresent(fetch_data(result, 'lab_id'))
+        self.assertPresent(fetch_data(result, 'lab_ip'))
+
+        web = fetch_data(result, 'lab_web')
+        self.assertPresent(web)
+        self.assertPresent(web.get('address'))
+        self.assertPresent(web.get('org'))
+        self.assertPresent(web.get('user'))
+        self.assertPresent(web.get('password'))
+
+        amqp = fetch_data(result, 'lab_amqp')
+        self.assertPresent(amqp)
+        self.assertPresent(amqp.get('address'))
+        self.assertPresent(amqp.get('user'))
+        self.assertPresent(amqp.get('password'))
+
+    def assertNoLabReturned(self, result):
+        self.assertFalse(fetch_data(result, 'lab_name'))
+        self.assertFalse(fetch_data(result, 'lab_id'))
+
 
 def set_module_args(args):
     """prepare arguments so that they will be picked up during module creation"""
