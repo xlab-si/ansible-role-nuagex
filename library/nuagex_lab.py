@@ -82,16 +82,16 @@ EXAMPLES = '''
 # ok: [localhost] => {
 #    "lab": {
 #        "lab_name": "integration-tests", 
-#        "lab_id": "5be2d3e0b779ef0c66593251", 
-#        "lab_ip": "124.252.253.179", 
+#        "lab_id": "aaaaaabbbbbbccccccdddddd", 
+#        "lab_ip": "1.2.3.4", 
 #        "lab_web": {
-#            "address": "https://124.252.253.179:8443", 
-#            "org": "csp", 
-#            "user": "admin",
-#            "password": "_h5vGWvkrHgt1aEu"
+#            "address": "https://1.2.3.4:443", 
+#            "org": "org1", 
+#            "user": "user1",
+#            "password": "the-password"
 #        },
 #        "lab_amqp": {
-#            "address": "amqp://124.252.253.179:5672", 
+#            "address": "amqp://1.2.3.4:5672",
 #            "password": "the-password", 
 #            "user": "the-user@system"
 #        }, 
@@ -112,15 +112,15 @@ lab_ip:
 lab_web:
     description: Dict containing connectivity information to NuageX web interface
     fields:
-    - address e.g. "https://124.252.253.179:8443"
-    - org e.g "csp"
-    - user e.g. "admin"
-    - password e.g. "_h5vGWvkrHgt1aEu"
+    - address e.g. "https://1.2.3.4:443"
+    - org e.g "org1"
+    - user e.g. "user1"
+    - password e.g. "the-password"
     type: dict
 lab_amqp:
     description: Dict containing connectivity information to NuageX AMQP eventing interface
     fields:
-    - address e.g. "amqp://124.252.253.179:5672"
+    - address e.g. "amqp://1.2.3.4:5672"
     - user e.g. "the-user@system"
     - password e.g. "the-password"
     type: dict
