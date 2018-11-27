@@ -129,6 +129,7 @@ lab_amqp:
 from ansible.module_utils.basic import AnsibleModule
 from ansible.module_utils.urls import fetch_url
 from ansible.module_utils._text import to_native
+from datetime import datetime, timedelta
 
 import json
 import os
@@ -194,7 +195,7 @@ class NuageX(object):
             'services': [],
             'networks': [],
             'servers': [],
-            'expires': '0001-01-01T00:00:00Z',  # will default to 4.5 days from now
+            'expires': (datetime.utcnow() + timedelta(days=3)).strftime('%Y-%m-%dT%H:%M:%SZ'),
             'reason': 'Created by Ansible'
         })
         return NuageLab.from_json(lab_data)
