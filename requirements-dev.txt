@@ -1,4 +1,4 @@
-ansible==2.7.12
+ansible==2.9.20
 pytest==3.10.0
 mock==2.0.0
 vcrpy-unittest==0.1.7
